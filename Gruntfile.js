@@ -6,8 +6,8 @@ module.exports = function(grunt) {
 
          uglify: {
             build: {
-                src: 'jquery-readmore.js',
-                dest: 'jquery-readmore.min.js'
+                src: 'dist/jquery-readmore.js',
+                dest: 'dist/jquery-readmore.min.js'
             }
         }
 
