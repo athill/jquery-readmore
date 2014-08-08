@@ -3,6 +3,12 @@
 * Creates read more link after approximate number of chars, but only splits between works
 * author: andy hill andy@andyhill.us
 *********************/
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^\s+|\s+$/g, '');
+  };
+}
+
 
 (function($){
 	$.fn.readmore = function(options) {          
@@ -15,30 +21,35 @@
 		};
 		options = $.extend({}, defaults, options);   ////options will be the parameter scope
 		return this.each(function() {                ////loop through each matched element
-			var text = $(this).text();
-			var content = $(this).html();
+			var text = $(this).text().trim();
+			var content = $(this).html().trim();
 			var words = text.split(/\s/);
+			//// Determine number of words to display before cutoff
 			var len = 0;
 			var numwords = 0;
-			for (numwords=0; numwords<words.length; numwords++) {
+			for (numwords = 0; numwords < words.length; numwords++) {
 				len += words[numwords].length + 1;
 				if (len >= options.chars) {
 					break;
 				}
 			}
+			//// Split content
 			var show = '';
 			var hide = content;
 			for (var i = 0; i < numwords; i++) {
-				var cutoff = hide.indexOf(words[i]) + words[i].length;
+				var cutoff = findWord(hide, words[i]);
 				show += hide.slice(0, cutoff);
 				hide = hide.slice(cutoff);
 			}
-			console.log(cutoff);
+			//// replace original content with readmore structure
 			var separator = (options.newline) ? '<br />' : '&nbsp;';
-			var replace = show + '<span class="readmore-rest">'+hide+'</span>'+
+			var replace = '<span class="readmore-show">'+ show + '</span>'+
+				'<span class="readmore-rest">'+hide+'</span>'+
 				separator+'<a class="readmore-more" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
+			//// hide rest
 			$('.readmore-rest', this).hide();
+			//// toggle content
 		    $('.readmore-more', this).click(function() {
 		    	$(this).siblings('.readmore-rest').toggle(options.speed);
 		    	$(this).text(($(this).text().trim() == options.lessText) ? 
@@ -47,6 +58,29 @@
 		    	);
 		    	return false;
 		    });
+		    /**
+		     *	Finds word in content, ignoring any html, but passes html 
+		     */
+		    function findWord(content, word) {
+		    	var inTag = false,		//// whether we're in an html tag
+		    		buildword = '';		//// build html-free word to test
+		    	for (var i = 0; i < content.length; i++) {
+		    		var chr = content.charAt(i);
+		    		if (chr == '<') {
+		    			inTag = true;
+		    		} else if (chr == '>') {
+		    			inTag = false;
+		    		} else {
+			    		if (!inTag && !/\s/.test(chr)) {
+			    			buildword += chr;
+			    		}
+			    		if (buildword == word) {
+			    			return i+1;
+			    		}
+		    		}
+		    	}
+		    	return i;
+		    }
 		});
 
 	};
