@@ -1,5 +1,7 @@
 {
   "name": "jquery-readmore",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "qunit": "~1.15.0"
   }
 }
