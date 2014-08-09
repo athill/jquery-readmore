@@ -3,19 +3,89 @@
 <head>
 	<meta charset="UTF-8">
 	<title>jquery-readme demo</title>
+	<style>
+	body {
+		font: 10pt verdana, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
+	h1 {
+		background: black;
+		color: white;
+		padding: 1em;
+		margin: 0;
+	}
+	#content {
+		margin-left: 1em;
+	}
+	a, a:visited, a:active {
+		color: red;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	</style>
 </head>
 <body>
 <h1>jquery-readme demo</h1>
+<div id="content">
+	<!-- Basic Usage -->
+	<h2>Basic Usage</h2>
+	<code>
+	<pre>
+	$('#test1').readmore();	
+	</pre>
+	</code>
+	<div id="test1" class="test"></div>
 
-<div id="test1">
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis mi sagittis magna consectetur dapibus tempor quis ipsum. Duis a dolor id sem ullamcorper euismod non sit amet ante. Aliquam volutpat neque ut mi tristique, vel cursus tellus pharetra. Nulla dapibus tortor non ligula luctus faucibus. Aliquam tortor tellus, rhoncus varius tempus et, adipiscing non mi. In hac habitasse platea dictumst. Maecenas dapibus, nisl et fermentum commodo, arcu magna viverra enim, sagittis tristique magna lorem et mauris. Mauris pretium libero id tortor lobortis porta. Duis auctor semper leo, vitae dictum velit ornare in. Vestibulum pharetra bibendum commodo. Sed ornare enim dolor, eget luctus purus euismod a. 
+	<!-- Toggle Text -->
+	<h2>Toggle Text</h2>
+	<code>
+	<pre>
+	$('#test2').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});	
+	</pre>
+	</code>
+	<div id="test2" class="test"></div>
+
+	<!-- Length -->
+	<h2>Length</h2>
+	<code>
+	<pre>
+	$('#test3').readmore({ chars: 100 });	
+	</pre>
+	</code>
+	<div id="test3" class="test"></div>
+
+	<!-- Speed -->
+	<h2>Speed</h2>
+	<code>
+	<pre>
+	$('#test4').readmore({ speed: 0 });	
+	</pre>
+	</code>
+	<div id="test4" class="test"></div>
+
+	<!-- Newline -->
+	<h2>Newline</h2>
+	<code>
+	<pre>
+	$('#test5').readmore({ newline: true });	
+	</pre>
+	</code>
+	<div id="test5" class="test"></div>
 </div>
 
 <script src="lib/jquery/dist/jquery.min.js"></script>	
 <script src="dist/jquery-readmore.min.js"></script>
 <script>
+var content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis mi sagittis magna consectetur dapibus tempor quis ipsum. Duis a dolor id sem ullamcorper euismod non sit amet ante. Aliquam volutpat neque ut mi tristique, vel cursus tellus pharetra. Nulla dapibus tortor non ligula luctus faucibus. Aliquam tortor tellus, rhoncus varius tempus et, adipiscing non mi. In hac habitasse platea dictumst. Maecenas dapibus, nisl et fermentum commodo, arcu magna viverra enim, sagittis tristique magna lorem et mauris. Mauris pretium libero id tortor lobortis porta. Duis auctor semper leo, vitae dictum velit ornare in. Vestibulum pharetra bibendum commodo. Sed ornare enim dolor, eget luctus purus euismod a.';
 $(function() {
+	$('.test').html(content);
 	$('#test1').readmore();
+	$('#test2').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});
+	$('#test3').readmore({ chars: 100 });
+	$('#test4').readmore({ speed: 0 });	
+	$('#test5').readmore({ newline: true });	
 });
 </script>
 </body>

@@ -51,11 +51,16 @@ if (!String.prototype.trim) {
 			$('.readmore-rest', this).hide();
 			//// toggle content
 		    $('.readmore-more', this).click(function() {
-		    	$(this).siblings('.readmore-rest').toggle(options.speed);
-		    	$(this).text(($(this).text().trim() == options.lessText) ? 
-		    		options.moreText : 
-		    		options.lessText
-		    	);
+		    	var text = options.moreText;
+		    	var rest = $(this).siblings('.readmore-rest');
+		    	if ($(this).text().trim() == options.lessText) {
+		    		rest.css('display', 'none');
+		    	} else {
+		    		text = options.lessText;
+		    		rest.css('display', 'inline');
+
+		    	}
+				$(this).text(text);		    
 		    	return false;
 		    });
 		    /**
