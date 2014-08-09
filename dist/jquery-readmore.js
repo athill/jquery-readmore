@@ -46,13 +46,13 @@ if (!String.prototype.trim) {
 			var separator = (options.newline) ? '<br />' : '&nbsp;';
 			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
 				'<span class="'+options.prefix+'-rest" style="display: inline !important;">'+hide+'</span>'+
-				separator+'<a class="'+options.prefix+'-more" href="">'+options.moreText+'</a>';
+				separator+'<a class="'+options.prefix+'-toggle" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
 
 			//// hide rest
 			$('.'+options.prefix+'-rest', this).hide();
 			//// toggle content
-		    $('.'+options.prefix+'-more', this).click(function() {
+		    $('.'+options.prefix+'-toggle', this).click(function() {
 		    	var text = options.moreText;
 		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
 		    	if ($(this).text().trim() == options.lessText) {
