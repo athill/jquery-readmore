@@ -1,7 +1,7 @@
 QUnit.test('basics', function(assert) {
 	$('#test1').readmore();
 	assert.equal($('#test1 .readmore-show').length, 1, 'readmore-show exists');
-	assert.equal($('#test1 .readmore-more').length, 1, 'readmore-more exists');
+	assert.equal($('#test1 .readmore-toggle').length, 1, 'readmore-more exists');
 	assert.equal($('#test1 .readmore-rest').length, 1, 'readmore-rest exists');
 	// console.log($('#test1 .readmore-show').html());
 });
