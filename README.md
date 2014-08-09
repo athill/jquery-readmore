@@ -21,5 +21,14 @@ Options
 |lessText| Less    | Text to display when content is shown              |
 |newline | false   | Whether to have a line break before the toggle link|
 |speed   | 1000    | Animation speed when toggling text                 |
+|prefix  | readmore| prefix for css styles                              |
 
+CSS
+---
+jquery-readmore creates three elements within the containing element. 
+- span.readmore-show contains the portion of text that is always displayed
+- span.readmore-rest contains the portion of text that is toggled
+- a.readmore-toggle contains the text that toggles the additional text
+
+Using the prefix option, you can change the prefix of these classes to something besides 'readmore'.
 
