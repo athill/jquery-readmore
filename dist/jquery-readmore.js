@@ -45,9 +45,10 @@ if (!String.prototype.trim) {
 			//// replace original content with readmore structure
 			var separator = (options.newline) ? '<br />' : '&nbsp;';
 			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
-				'<span class="'+options.prefix+'-rest">'+hide+'</span>'+
+				'<span class="'+options.prefix+'-rest" style="display: inline !important;">'+hide+'</span>'+
 				separator+'<a class="'+options.prefix+'-more" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
+
 			//// hide rest
 			$('.'+options.prefix+'-rest', this).hide();
 			//// toggle content
@@ -55,11 +56,12 @@ if (!String.prototype.trim) {
 		    	var text = options.moreText;
 		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
 		    	if ($(this).text().trim() == options.lessText) {
-		    		rest.css('display', 'none');
+		    		rest.animate({ 'opacity': 0}, options.speed, function() {
+		    			$(this).css('display', 'none');
+		    		})
 		    	} else {
 		    		text = options.lessText;
-		    		rest.css('display', 'inline');
-
+		    		rest.css({ 'opacity': 0, 'display': 'inline'}).animate({ 'opacity': 1}, options.speed);
 		    	}
 				$(this).text(text);		    
 		    	return false;
