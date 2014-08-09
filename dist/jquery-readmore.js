@@ -17,7 +17,8 @@ if (!String.prototype.trim) {
 			moreText: 'More...',
 			lessText: 'Less',
 			newline: false,
-			speed: 1000
+			speed: 1000,
+			prefix: 'readmore'
 		};
 		options = $.extend({}, defaults, options);   ////options will be the parameter scope
 		return this.each(function() {                ////loop through each matched element
@@ -43,16 +44,16 @@ if (!String.prototype.trim) {
 			}
 			//// replace original content with readmore structure
 			var separator = (options.newline) ? '<br />' : '&nbsp;';
-			var replace = '<span class="readmore-show">'+ show + '</span>'+
-				'<span class="readmore-rest">'+hide+'</span>'+
-				separator+'<a class="readmore-more" href="">'+options.moreText+'</a>';
+			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
+				'<span class="'+options.prefix+'-rest">'+hide+'</span>'+
+				separator+'<a class="'+options.prefix+'-more" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
 			//// hide rest
-			$('.readmore-rest', this).hide();
+			$('.'+options.prefix+'-rest', this).hide();
 			//// toggle content
-		    $('.readmore-more', this).click(function() {
+		    $('.'+options.prefix+'-more', this).click(function() {
 		    	var text = options.moreText;
-		    	var rest = $(this).siblings('.readmore-rest');
+		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
 		    	if ($(this).text().trim() == options.lessText) {
 		    		rest.css('display', 'none');
 		    	} else {
