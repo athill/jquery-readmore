@@ -3,6 +3,8 @@ jquery-readmore
 
 jQuery plug-in for 'read more' functionality
 
+Demo: http://andyhill.us/jquery-readmore/demo.html
+
 Why another 'read more' plug-in?
 --------------------------------
 Good question. Glad you asked. I was looking for a 'read more' plug-in and all the ones I found were height based. I wanted one that was number-of-characters based, so I wrote this.
