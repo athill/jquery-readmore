@@ -25,3 +25,21 @@ QUnit.test('entities', function(assert) {
 	$('#test4').readmore();
 	assert.equal($('#test1 .readmore-show').text().length, $('#test4 .readmore-show').text().length, 'text is eq length');
 });
+
+
+QUnit.test('speed and more/less text', function(assert) {
+	var speed = 50;
+	var buffer = 10;
+	var moreText = 'moar';
+	var lessText = 'lesh';	
+	$('#test1').readmore({ moreText: moreText, lessText: lessText, speed: speed });
+	var toggle = $('#test1 .readmore-toggle');
+	//// more text
+	assert.equal(toggle.html(), moreText);
+	toggle.click().delay(speed + buffer);
+	//// less text
+	assert.equal(toggle.html(), lessText);
+	toggle.click().delay(speed + buffer);
+	//// more text
+	assert.equal(toggle.html(), moreText);
+});
