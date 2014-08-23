@@ -47,8 +47,8 @@ if (!String.prototype.trim) {
 			var separator = (typeof options.newline == 'boolean') ? 
 				(options.newline) ? '<br>' : '&nbsp;' :
 				options.newline;
-			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
-				'<span class="'+options.prefix+'-rest" style="display: inline !important;">'+hide+'</span>'+
+			var replace = '<span class="'+options.prefix+'-show">'+ show +'</span>'+
+				'<span class="'+options.prefix+'-rest">'+hide+'</span>'+
 				'<span class="'+options.prefix+'-newline">'+separator+'</span>'+
 				'<a class="'+options.prefix+'-toggle" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
