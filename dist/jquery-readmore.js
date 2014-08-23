@@ -60,20 +60,21 @@ if (!String.prototype.trim) {
 		    	var text = options.moreText;
 		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
 		    	var toggle = $(this);
+		    	//// hide
 		    	if (toggle.text().trim() == options.lessText) {
 		    		toggle.css('display', 'none', options.duration);
 		    		rest.animate({ 'opacity': 0}, options.duration, function() {
 		    			$(this).css('display', 'none');
 		    			toggle.css('display', 'inline');
 		    		});
-		    		
+		    	//// show	
 		    	} else {
 		    		text = options.lessText;
 		    		toggle.hide(0);
 		    		toggle.show(options.duration);
 		    		rest.css({ 'opacity': 0, 'display': 'inline'}).animate({ 'opacity': 1}, options.duration);
 		    	}
-				$(this).text(text);		    
+				toggle.text(text);		    
 		    	return false;
 		    });
 		    /**
