@@ -24,6 +24,7 @@ if (!String.prototype.trim) {
 		return this.each(function() {                ////loop through each matched element
 			var text = $(this).text().trim();
 			var content = $(this).html().trim();
+			$(this).data(options.prefix+'-original', content);
 			var words = text.split(/\s/);
 			//// Determine number of words to display before cutoff
 			var len = 0;
