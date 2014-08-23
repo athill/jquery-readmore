@@ -78,7 +78,7 @@ if (!String.prototype.trim) {
 		    	return false;
 		    });
 		    /**
-		     *	Finds word in content, ignoring any html, but passes html 
+		     *	Finds word in content, ignoring any html
 		     */
 		    function findWord(content, word) {
 		    	var inTag = false,		//// whether we're in an html tag
