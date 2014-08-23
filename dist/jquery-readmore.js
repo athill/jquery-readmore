@@ -17,7 +17,7 @@ if (!String.prototype.trim) {
 			moreText: 'More...',
 			lessText: 'Less',
 			newline: false,
-			speed: 1000,
+			duration: 1000,
 			prefix: 'readmore'
 		};
 		options = $.extend({}, defaults, options);   ////options will be the parameter scope
@@ -61,8 +61,8 @@ if (!String.prototype.trim) {
 		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
 		    	var toggle = $(this);
 		    	if (toggle.text().trim() == options.lessText) {
-		    		toggle.css('display', 'none', options.speed);
-		    		rest.animate({ 'opacity': 0}, options.speed, function() {
+		    		toggle.css('display', 'none', options.duration);
+		    		rest.animate({ 'opacity': 0}, options.duration, function() {
 		    			$(this).css('display', 'none');
 		    			toggle.css('display', 'inline');
 		    		});
@@ -70,8 +70,8 @@ if (!String.prototype.trim) {
 		    	} else {
 		    		text = options.lessText;
 		    		toggle.hide(0);
-		    		toggle.show(options.speed);
-		    		rest.css({ 'opacity': 0, 'display': 'inline'}).animate({ 'opacity': 1}, options.speed);
+		    		toggle.show(options.duration);
+		    		rest.css({ 'opacity': 0, 'display': 'inline'}).animate({ 'opacity': 1}, options.duration);
 		    	}
 				$(this).text(text);		    
 		    	return false;

@@ -33,19 +33,19 @@ QUnit.test('entities', function(assert) {
 
 
 //// options
-QUnit.test('speed and more/less text', function(assert) {
-	var speed = 50,
+QUnit.test('duration and more/less text', function(assert) {
+	var duration = 50,
 		buffer = 10, 
 		moreText = 'moar', 
 		lessText = 'lesh';	
-	$('#test1').readmore({ moreText: moreText, lessText: lessText, speed: speed });
+	$('#test1').readmore({ moreText: moreText, lessText: lessText, duration: duration });
 	var toggle = $('#test1 .readmore-toggle');
 	//// more text
 	assert.equal(toggle.html(), moreText, 'initially set to moreText');
-	toggle.click().delay(speed + buffer);
+	toggle.click().delay(duration + buffer);
 	//// less text
 	assert.equal(toggle.html(), lessText, 'set to lessText after first click');
-	toggle.click().delay(speed + buffer);
+	toggle.click().delay(duration + buffer);
 	//// more text
 	assert.equal(toggle.html(), moreText, 'reset to moreText after second click');
 });

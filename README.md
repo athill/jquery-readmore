@@ -16,20 +16,21 @@ Usage
 
 Options
 -------
-| Option | Default | Description                                        |
-| ------ | ------- | -----------                                        |
-|chars   | 50      | Approximate number of characters before break      |
-|moreText| More ...| Text to display when content is hidden             |
-|lessText| Less    | Text to display when content is shown              |
-|newline | false   | Whether to have a line break before the toggle link|
-|speed   | 1000    | Animation speed when toggling text                 |
-|prefix  | readmore| prefix for css styles                              |
+| Option | Default | Type   | Description                                        |
+| ------ | ------- | -----  | -----------
+|chars   | 50      | int    |Approximate number of characters before break      |
+|moreText| More ...| string |Text to display when extra content is hidden             |
+|lessText| Less    | string | Text to display when extra content is shown              |
+|newline | false   | ???    | Whether to have a line break before the toggle link. Can also be a string |
+|duration| 1000    | ???    | Duration of animation when toggling text. Any valid jQuery duration value |
+|prefix  | readmore| string | prefix for css styles                              |
 
 CSS
 ---
-jquery-readmore creates three elements within the containing element. 
+jquery-readmore creates four elements within the containing element. 
 - span.readmore-show contains the portion of text that is always displayed
 - span.readmore-rest contains the portion of text that is toggled
+- span.readmore-newline contains the separator between 'show' and 'rest'
 - a.readmore-toggle contains the text that toggles the additional text
 
 Using the prefix option, you can change the prefix of these classes to something besides 'readmore'.
