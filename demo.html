@@ -75,14 +75,21 @@
 	</code>
 	<div id="test5" class="test"></div>
 
+	<code>
+	<pre>
+	$('#test6').readmore({ newline: "&lt;hr&gt;" });	
+	</pre>
+	</code>
+	<div id="test6" class="test"></div>
+
 	<!-- Prefix -->
 	<h2>Prefix</h2>
 	<code>
 	<pre>
-	$('#test6').readmore({ prefix: 'test' });	
+	$('#test7').readmore({ prefix: 'test' });	
 	</pre>
 	</code>
-	<div id="test6" class="test"></div>	
+	<div id="test7" class="test"></div>	
 </div>
 
 <script src="lib/jquery/dist/jquery.min.js"></script>	
@@ -96,7 +103,8 @@ $(function() {
 	$('#test3').readmore({ chars: 100 });
 	$('#test4').readmore({ speed: 0 });	
 	$('#test5').readmore({ newline: true });
-	$('#test6').readmore({ prefix: 'test' });	
+	$('#test6').readmore({ newline: '<hr>' });
+	$('#test7').readmore({ prefix: 'test' });	
 });
 </script>
 </body>

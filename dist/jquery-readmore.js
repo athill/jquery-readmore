@@ -43,10 +43,13 @@ if (!String.prototype.trim) {
 				hide = hide.slice(cutoff);
 			}
 			//// replace original content with readmore structure
-			var separator = (options.newline) ? '<br />' : '&nbsp;';
+			var separator = (typeof options.newline == 'boolean') ? 
+				(options.newline) ? '<br />' : '&nbsp;' :
+				options.newline;
 			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
 				'<span class="'+options.prefix+'-rest" style="display: inline !important;">'+hide+'</span>'+
-				separator+'<a class="'+options.prefix+'-toggle" href="">'+options.moreText+'</a>';
+				'<span class="'+options.prefix+'-newline">'+separator+'</span>'+
+				'<a class="'+options.prefix+'-toggle" href="">'+options.moreText+'</a>';
 			$(this).html(replace);
 
 			//// hide rest
