@@ -21,8 +21,8 @@ Options
 |chars   | 50      | int    |Approximate number of characters before break      |
 |moreText| More ...| string |Text to display when extra content is hidden             |
 |lessText| Less    | string | Text to display when extra content is shown              |
-|newline | false   | ???    | Whether to have a line break before the toggle link. Can also be a string |
-|duration| 1000    | ???    | Duration of animation when toggling text. Any valid jQuery duration value |
+|newline | false   | boolean/string   | Whether to have a line break before the toggle link. Can also be a string |
+|duration| 1000    | int/string    | Duration of animation when toggling text. Any valid jQuery duration value |
 |prefix  | readmore| string | prefix for css styles                              |
 
 CSS
