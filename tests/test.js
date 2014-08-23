@@ -2,14 +2,15 @@ var suffixes = ['show', 'toggle', 'newline', 'rest'];
 
 //// basics
 QUnit.test('basics', function(assert) {
+	var prefix = 'readmore'; //// default prefix
 	$('#test1').readmore();
-	assert.equal($('#test1 .readmore-show').length, 1, 'readmore-show exists');
-	assert.equal($('#test1 .readmore-toggle').length, 1, 'readmore-more exists');
-	assert.equal($('#test1 .readmore-newline').length, 1, 'readmore-newline exists');
-	assert.equal($('#test1 .readmore-rest').length, 1, 'readmore-rest exists');
-	// console.log($('#test1 .readmore-show').html());
+	for (var i = 0; i < suffixes.length; i++) {
+		var suffix = suffixes[i];
+		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+'exists');	
+	}
 });
 
+//// handling html and entities
 QUnit.test('embedded html', function(assert) {
 	$('#test1').readmore();
 	$('#test2').readmore();
@@ -31,6 +32,7 @@ QUnit.test('entities', function(assert) {
 });
 
 
+//// options
 QUnit.test('speed and more/less text', function(assert) {
 	var speed = 50,
 		buffer = 10, 
@@ -71,8 +73,4 @@ QUnit.test('prefix', function(assert) {
 		var suffix = suffixes[i];
 		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+'exists');	
 	}
-	// assert.equal($('#test1 .'+prefix+'-show').length, 1, prefix+'-show exists');
-	// assert.equal($('#test1 .'+prefix+'-newline').length, 1, prefix+'-newline exists');
-	// assert.equal($('#test1 .'+prefix+'-rest').length, 1, prefix+'-rest exists');
-	// assert.equal($('#test1 .'+prefix+'-toggle').length, 1, prefix+'-toggle exists');
 });

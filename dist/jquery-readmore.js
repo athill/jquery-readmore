@@ -44,7 +44,7 @@ if (!String.prototype.trim) {
 			}
 			//// replace original content with readmore structure
 			var separator = (typeof options.newline == 'boolean') ? 
-				(options.newline) ? '<br />' : '&nbsp;' :
+				(options.newline) ? '<br>' : '&nbsp;' :
 				options.newline;
 			var replace = '<span class="'+options.prefix+'-show">'+ show + '</span>'+
 				'<span class="'+options.prefix+'-rest" style="display: inline !important;">'+hide+'</span>'+
@@ -58,12 +58,18 @@ if (!String.prototype.trim) {
 		    $('.'+options.prefix+'-toggle', this).click(function() {
 		    	var text = options.moreText;
 		    	var rest = $(this).siblings('.'+options.prefix+'-rest');
-		    	if ($(this).text().trim() == options.lessText) {
+		    	var toggle = $(this);
+		    	if (toggle.text().trim() == options.lessText) {
+		    		toggle.css('display', 'none', options.speed);
 		    		rest.animate({ 'opacity': 0}, options.speed, function() {
 		    			$(this).css('display', 'none');
-		    		})
+		    			toggle.css('display', 'inline');
+		    		});
+		    		
 		    	} else {
 		    		text = options.lessText;
+		    		toggle.hide(0);
+		    		toggle.show(options.speed);
 		    		rest.css({ 'opacity': 0, 'display': 'inline'}).animate({ 'opacity': 1}, options.speed);
 		    	}
 				$(this).text(text);		    
