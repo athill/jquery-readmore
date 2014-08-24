@@ -22,23 +22,20 @@ if (!String.prototype.trim) {
 		};
 		options = $.extend({}, defaults, options);   ////options will be the parameter scope
 		return this.each(function() {                ////loop through each matched element
-			var text = $(this).text().trim();
-			var content = $(this).html().trim();
+			var container = $(this);
+			var content = container.html().trim();
 			var original = 'readmore-original'
-			if ($(this).data(original)) {
-				// console.log('reload');
-				content = $(this).data(original);
-				// text = $(this).data(original+'-text');
-				text = $(this).text();
-				$(this).html(content);
+			//// reloading
+			if (container.data(original)) {
+				content = container.data(original);
+				container.html(content);
+			//// first loading
 			} else {
-				// console.log('new');
 				$(this).data(original, content);
-				// $(this).data(original+'-text', text);
 			}
-			// console.log(content);
-			var words = text.split(/\s/);
+			var text = container.text().trim();
 			//// Determine number of words to display before cutoff
+			var words = text.split(/\s/);
 			var len = 0;
 			var numwords = 0;
 			for (numwords = 0; numwords < words.length; numwords++) {
@@ -63,7 +60,7 @@ if (!String.prototype.trim) {
 				'<span class="'+options.prefix+'-rest">'+hide+'</span>'+
 				'<span class="'+options.prefix+'-newline">'+separator+'</span>'+
 				'<a class="'+options.prefix+'-toggle" href="">'+options.moreText+'</a>';
-			$(this).html(replace);
+			container.html(replace);
 
 			//// hide rest
 			$('.'+options.prefix+'-rest', this).hide();
