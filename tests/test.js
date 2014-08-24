@@ -1,4 +1,14 @@
 var suffixes = ['show', 'toggle', 'newline', 'rest'];
+var texts = {
+	default: {
+		more: 'More ...',
+		less: 'Less'
+	},
+	test: {
+		more: 'More!!!',
+		less: 'Less!!!'
+	}
+}
 
 //// basics
 QUnit.test('basics', function(assert) {
@@ -6,7 +16,7 @@ QUnit.test('basics', function(assert) {
 	$('#test1').readmore();
 	for (var i = 0; i < suffixes.length; i++) {
 		var suffix = suffixes[i];
-		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+'exists');	
+		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+' exists');	
 	}
 });
 
@@ -36,8 +46,8 @@ QUnit.test('entities', function(assert) {
 QUnit.test('duration and more/less text', function(assert) {
 	var duration = 50,
 		buffer = 10, 
-		moreText = 'moar', 
-		lessText = 'lesh';	
+		moreText = texts.default.more, 
+		lessText = 'Less!!!';	
 	$('#test1').readmore({ moreText: moreText, lessText: lessText, duration: duration });
 	var toggle = $('#test1 .readmore-toggle');
 	//// more text
@@ -71,6 +81,17 @@ QUnit.test('prefix', function(assert) {
 	$('#test1').readmore({ prefix: prefix });
 	for (var i = 0; i < suffixes.length; i++) {
 		var suffix = suffixes[i];
-		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+'exists');	
+		assert.equal($('#test1 .'+prefix+'-'+suffix).length, 1, prefix+'-'+suffix+' exists');	
 	}
+});
+
+QUnit.test('reload', function(assert) {
+	var context = $('#test1');
+	context.readmore();
+	assert.equal($('.readmore-toggle', context).length, 1, 'readmore-toggle exists');
+	var prefix = 'test';
+	context.readmore({ prefix: prefix });
+	assert.equal($('.'+prefix+'-toggle', context).length, 1, prefix+'toggle exists');
+
+
 });

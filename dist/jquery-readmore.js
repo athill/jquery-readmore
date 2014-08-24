@@ -24,7 +24,18 @@ if (!String.prototype.trim) {
 		return this.each(function() {                ////loop through each matched element
 			var text = $(this).text().trim();
 			var content = $(this).html().trim();
-			$(this).data(options.prefix+'-original', content);
+			var original = 'readmore-original'
+			if ($(this).attr('data-'+original)) {
+				console.log('reload');
+				content = $(this).data(original);
+				text = content.text();
+			} else {
+				console.log('new');
+				$(this).data(original, content);
+				$(this).data('um', 'test');
+				console.log('new done');
+			}
+			// console.log(content);
 			var words = text.split(/\s/);
 			//// Determine number of words to display before cutoff
 			var len = 0;

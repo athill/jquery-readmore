@@ -83,13 +83,15 @@
 	<div id="test6" class="test"></div>
 
 	<!-- Prefix -->
-	<h2>Prefix</h2>
+	<h2>Reload</h2>
 	<code>
 	<pre>
-	$('#test7').readmore({ prefix: 'test' });	
+	$('#test7').readmore();	
 	</pre>
 	</code>
+	<p>Click the button to toggle 'chars' option</p>
 	<div id="test7" class="test"></div>	
+	<button id="toggle">Toggle</button>
 </div>
 
 <script src="lib/jquery/dist/jquery.min.js"></script>	
@@ -104,7 +106,12 @@ $(function() {
 	$('#test4').readmore({ duration: 0 });	
 	$('#test5').readmore({ newline: true });
 	$('#test6').readmore({ newline: '<hr>' });
-	$('#test7').readmore({ prefix: 'test' });	
+	$('#test7').readmore({ prefix: 'test', chars: 100 });
+	$('#toggle').click(function(e) {
+		var prefix = ($('#test7 .test-show').length > 0) ? 'readmore' : 'test';
+		var chars = (prefix == 'test') ? 50 : 100;
+		$('#test7').readmore({ prefix: prefix, chars: chars });
+	});
 });
 </script>
 </body>
