@@ -33,5 +33,9 @@ jquery-readmore creates four elements within the containing element.
 - span.readmore-newline contains the separator between 'show' and 'rest'
 - a.readmore-toggle contains the text that toggles the additional text
 
-Using the prefix option, you can change the prefix of these classes to something besides 'readmore'.
+Using the prefix option, you can change the prefix of these classes to something besides 'readmore' in case of conflicts.
+
+Data
+----
+A data-readmore-original attribute is set on the containing element to store the orignal content. Unlike the CSS, the prefix is not configurable
 
