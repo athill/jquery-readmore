@@ -91,7 +91,7 @@ QUnit.test('reload', function(assert) {
 	assert.equal($('.readmore-toggle', context).length, 1, 'readmore-toggle exists');
 	var prefix = 'test';
 	context.readmore({ prefix: prefix });
-	assert.equal($('.'+prefix+'-toggle', context).length, 1, prefix+'toggle exists');
+	assert.equal($('.'+prefix+'-toggle', context).length, 1, prefix+'-toggle exists');
 
 
 });

@@ -25,15 +25,16 @@ if (!String.prototype.trim) {
 			var text = $(this).text().trim();
 			var content = $(this).html().trim();
 			var original = 'readmore-original'
-			if ($(this).attr('data-'+original)) {
-				console.log('reload');
+			if ($(this).data(original)) {
+				// console.log('reload');
 				content = $(this).data(original);
-				text = content.text();
+				// text = $(this).data(original+'-text');
+				text = $(this).text();
+				$(this).html(content);
 			} else {
-				console.log('new');
+				// console.log('new');
 				$(this).data(original, content);
-				$(this).data('um', 'test');
-				console.log('new done');
+				// $(this).data(original+'-text', text);
 			}
 			// console.log(content);
 			var words = text.split(/\s/);
