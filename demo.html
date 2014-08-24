@@ -34,63 +34,63 @@
 	<h2>Basic Usage</h2>
 	<code>
 	<pre>
-	$('#test1').readmore();	
+	$('#basics').readmore();	
 	</pre>
 	</code>
-	<div id="test1" class="test"></div>
+	<div id="basics" class="demo"></div>
 
 	<!-- Toggle Text -->
 	<h2>Toggle Text</h2>
 	<code>
 	<pre>
-	$('#test2').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});	
+	$('#toggle-text').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});	
 	</pre>
 	</code>
-	<div id="test2" class="test"></div>
+	<div id="toggle-text" class="demo"></div>
 
 	<!-- Length -->
-	<h2>Length</h2>
+	<h2>Length (chars)</h2>
 	<code>
 	<pre>
-	$('#test3').readmore({ chars: 100 });	
+	$('#chars').readmore({ chars: 100 });	
 	</pre>
 	</code>
-	<div id="test3" class="test"></div>
+	<div id="chars" class="demo"></div>
 
 	<!-- Duration -->
 	<h2>Duration</h2>
 	<code>
 	<pre>
-	$('#test4').readmore({ duration: 0 });	
+	$('#duration').readmore({ duration: 0 });	
 	</pre>
 	</code>
-	<div id="test4" class="test"></div>
+	<div id="duration" class="demo"></div>
 
 	<!-- Newline -->
 	<h2>Newline</h2>
 	<code>
 	<pre>
-	$('#test5').readmore({ newline: true });	
+	$('#newline-true').readmore({ newline: true });	
 	</pre>
 	</code>
-	<div id="test5" class="test"></div>
+	<div id="newline-true" class="demo"></div>
 
 	<code>
 	<pre>
-	$('#test6').readmore({ newline: "&lt;hr&gt;" });	
+	$('#newline-string').readmore({ newline: "&lt;hr&gt;" });	
 	</pre>
 	</code>
-	<div id="test6" class="test"></div>
+	<div id="newline-string" class="demo"></div>
 
-	<!-- Prefix -->
+	<!-- Reload -->
 	<h2>Reload</h2>
 	<code>
 	<pre>
-	$('#test7').readmore();	
+	$('#reload').readmore();	
 	</pre>
 	</code>
 	<p>Click the button to toggle 'chars' option</p>
-	<div id="test7" class="test"></div>	
+	<div id="reload" class="demo"></div>	
 	<button id="toggle">Toggle</button>
 </div>
 
@@ -99,18 +99,18 @@
 <script>
 var content = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis mi sagittis magna consectetur dapibus tempor quis ipsum. Duis a dolor id sem ullamcorper euismod non sit amet ante. Aliquam volutpat neque ut mi tristique, vel cursus tellus pharetra. Nulla dapibus tortor non ligula luctus faucibus. Aliquam tortor tellus, rhoncus varius tempus et, adipiscing non mi. In hac habitasse platea dictumst. Maecenas dapibus, nisl et fermentum commodo, arcu magna viverra enim, sagittis tristique magna lorem et mauris. Mauris pretium libero id tortor lobortis porta. Duis auctor semper leo, vitae dictum velit ornare in. Vestibulum pharetra bibendum commodo. Sed ornare enim dolor, eget luctus purus euismod a.';
 $(function() {
-	$('.test').html(content);
-	$('#test1').readmore();
-	$('#test2').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});
-	$('#test3').readmore({ chars: 100 });
-	$('#test4').readmore({ duration: 0 });	
-	$('#test5').readmore({ newline: true });
-	$('#test6').readmore({ newline: '<hr>' });
-	$('#test7').readmore({ prefix: 'test', chars: 100 });
+	$('.demo').html(content);
+	$('#basics').readmore();
+	$('#toggle-text').readmore({ moreText: 'More!!!', lessText: 'Less!!!'});
+	$('#chars').readmore({ chars: 100 });
+	$('#duration').readmore({ duration: 0 });	
+	$('#newline-true').readmore({ newline: true });
+	$('#newline-string').readmore({ newline: '<hr>' });
+	$('#reload').readmore({ prefix: 'test', chars: 100 });
 	$('#toggle').click(function(e) {
-		var prefix = ($('#test7 .test-show').length > 0) ? 'readmore' : 'test';
+		var prefix = ($('#reload .test-show').length > 0) ? 'readmore' : 'test';
 		var chars = (prefix == 'test') ? 50 : 100;
-		$('#test7').readmore({ prefix: prefix, chars: chars });
+		$('#reload').readmore({ prefix: prefix, chars: chars });
 	});
 });
 </script>
