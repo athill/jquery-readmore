@@ -3,7 +3,7 @@ jquery-readmore
 
 jQuery plug-in for 'read more' functionality
 
-Demo: http://andyhill.us/jquery-readmore/demo.html
+Demo: https://athill.github.io/jquery-readmore/
 
 Why another 'read more' plug-in?
 --------------------------------
